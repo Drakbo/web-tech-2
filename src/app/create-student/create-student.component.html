@@ -4,95 +4,116 @@
   </header>
 
   <main class="main-content">
-    <form class="student-form" (ngSubmit)="onSubmit()">
+    <form class="student-form" [formGroup]="form" (ngSubmit)="createStudent()">
       
       <div class="form-group">
-        <label for="studentId">Student ID</label>
+        <label for="first_name">First Name *</label>
         <input 
           type="text" 
-          id="studentId" 
-          name="studentId"
-          [(ngModel)]="student.studentId" 
-          placeholder="Enter student ID"
-          required
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input 
-          type="text" 
-          id="firstName" 
-          name="firstName"
-          [(ngModel)]="student.firstName" 
+          id="first_name" 
+          formControlName="first_name"
           placeholder="Enter first name"
-          required
         />
+        <span class="error" *ngIf="form.get('first_name')?.invalid && form.get('first_name')?.touched">
+          First name is required
+        </span>
       </div>
 
       <div class="form-group">
-        <label for="lastName">Last Name</label>
+        <label for="last_name">Last Name *</label>
         <input 
           type="text" 
-          id="lastName" 
-          name="lastName"
-          [(ngModel)]="student.lastName" 
+          id="last_name" 
+          formControlName="last_name"
           placeholder="Enter last name"
-          required
         />
+        <span class="error" *ngIf="form.get('last_name')?.invalid && form.get('last_name')?.touched">
+          Last name is required
+        </span>
       </div>
 
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email">Email *</label>
         <input 
           type="email" 
           id="email" 
-          name="email"
-          [(ngModel)]="student.email" 
+          formControlName="email"
           placeholder="Enter email address"
-          required
         />
+        <span class="error" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+          <span *ngIf="form.get('email')?.hasError('required')">Email is required</span>
+          <span *ngIf="form.get('email')?.hasError('email')">Please enter a valid email</span>
+        </span>
       </div>
 
       <div class="form-group">
-        <label for="age">Age</label>
+        <label for="age">Age *</label>
         <input 
           type="number" 
           id="age" 
-          name="age"
-          [(ngModel)]="student.age" 
+          formControlName="age"
           placeholder="Enter age"
-          required
         />
+        <span class="error" *ngIf="form.get('age')?.invalid && form.get('age')?.touched">
+          Age is required
+        </span>
       </div>
 
       <div class="form-group">
-        <label for="gpa">GPA</label>
+        <label for="course">Course *</label>
+        <input 
+          type="text" 
+          id="course" 
+          formControlName="course"
+          placeholder="Enter course (e.g., BSIT, BSCS)"
+        />
+        <span class="error" *ngIf="form.get('course')?.invalid && form.get('course')?.touched">
+          Course is required
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="year_level">Year Level *</label>
+        <input 
+          type="number" 
+          id="year_level" 
+          formControlName="year_level"
+          placeholder="Enter year level (1, 2, 3, or 4)"
+        />
+        <span class="error" *ngIf="form.get('year_level')?.invalid && form.get('year_level')?.touched">
+          Year level is required
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="gpa">GPA *</label>
         <input 
           type="number" 
           id="gpa" 
-          name="gpa"
-          [(ngModel)]="student.gpa" 
+          formControlName="gpa"
           placeholder="Enter GPA (e.g., 3.5)"
           step="0.01"
-          required
         />
+        <span class="error" *ngIf="form.get('gpa')?.invalid && form.get('gpa')?.touched">
+          GPA is required
+        </span>
       </div>
 
       <div class="form-group">
-        <label for="enrollmentStatus">Enrollment Status</label>
+        <label for="enrollment_status">Enrollment Status *</label>
         <select 
-          id="enrollmentStatus" 
-          name="enrollmentStatus"
-          [(ngModel)]="student.enrollmentStatus"
-          required
+          id="enrollment_status" 
+          formControlName="enrollment_status"
         >
-          <option value="" disabled selected>Select enrollment status</option>
+          <option value="" disabled>Select enrollment status</option>
           <option value="Enrolled">Enrolled</option>
           <option value="Not Enrolled">Not Enrolled</option>
           <option value="Graduated">Graduated</option>
           <option value="On Leave">On Leave</option>
         </select>
+        <span class="error" *ngIf="form.get('enrollment_status')?.invalid && form.get('enrollment_status')?.touched">
+          Enrollment status is required
+        </span>
       </div>
 
       <div class="button-group">

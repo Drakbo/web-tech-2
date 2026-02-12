@@ -56,11 +56,22 @@
     &::placeholder {
       color: #b2bec3;
     }
+
+    &.ng-invalid.ng-touched {
+      border-color: #e74c3c;
+    }
   }
 
   select {
     cursor: pointer;
     background-color: white;
+  }
+
+  .error {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 6px;
+    display: block;
   }
 }
 
@@ -84,6 +95,11 @@
 
   &:hover {
     background-color: #229954;
+  }
+
+  &:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
   }
 }
 

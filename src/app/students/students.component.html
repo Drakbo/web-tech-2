@@ -5,13 +5,24 @@
   </header>
 
   <main class="main-content">
-    <article class="student-card" *ngFor="let student of students; let i = index">
-      <div class="student-info">
-        <h2 class="student-name">{{ student.name }}</h2>
-        <p class="student-course">{{ student.course }}</p>
-        <p class="student-year">{{ student.year }}</p>
-      </div>
-      <button class="delete-btn" (click)="deleteStudent(i)">Delete</button>
-    </article>
+    @for (student of students(); track student.id) {
+      <article class="student-card">
+        <div class="student-info">
+          <h2 class="student-name">{{ student.first_name }} {{ student.last_name }}</h2>
+          <div class="student-details">
+            <p><strong>Student ID:</strong> {{ student.id }}</p>
+            <p><strong>Email:</strong> {{ student.email }}</p>
+            <p><strong>Age:</strong> {{ student.age }}</p>
+            <p><strong>Course:</strong> {{ student.course }}</p>
+            <p><strong>Year Level:</strong> {{ student.year_level }}</p>
+            <p><strong>GPA:</strong> {{ student.gpa }}</p>
+            <p><strong>Status:</strong> <span class="status">{{ student.enrollment_status }}</span></p>
+          </div>
+        </div>
+        <button class="delete-btn" (click)="deleteStudent(student.id)">Delete</button>
+      </article>
+    } @empty {
+      <span class="no-students">No students found</span>
+    }
   </main>
 </div>

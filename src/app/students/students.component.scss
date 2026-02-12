@@ -60,20 +60,31 @@
   flex: 1;
 
   .student-name {
-    margin: 0 0 8px 0;
+    margin: 0 0 12px 0;
     font-size: 20px;
     color: #2c3e50;
   }
 
-  .student-course {
-    margin: 4px 0;
-    color: #7f8c8d;
-    font-weight: 600;
-  }
+  .student-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    
+    p {
+      margin: 4px 0;
+      color: #7f8c8d;
+      font-size: 14px;
 
-  .student-year {
-    margin: 4px 0;
-    color: #95a5a6;
+      strong {
+        color: #2c3e50;
+        font-weight: 600;
+      }
+    }
+
+    .status {
+      color: #27ae60;
+      font-weight: 600;
+    }
   }
 }
 
@@ -90,4 +101,12 @@
   &:hover {
     background-color: #c0392b;
   }
+}
+
+.no-students {
+  display: block;
+  text-align: center;
+  padding: 40px;
+  color: #95a5a6;
+  font-size: 18px;
 }
