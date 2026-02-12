@@ -106,10 +106,9 @@
           formControlName="enrollment_status"
         >
           <option value="" disabled>Select enrollment status</option>
-          <option value="Enrolled">Enrolled</option>
-          <option value="Not Enrolled">Not Enrolled</option>
-          <option value="Graduated">Graduated</option>
-          <option value="On Leave">On Leave</option>
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+
         </select>
         <span class="error" *ngIf="form.get('enrollment_status')?.invalid && form.get('enrollment_status')?.touched">
           Enrollment status is required
